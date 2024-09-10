@@ -1,0 +1,23 @@
+@media print {
+  @page {
+    margin: 0;
+  }
+  body {
+    margin: 1.6cm;
+  }
+  body * {
+    visibility: hidden;
+  }
+  #partieImprimable,
+  #partieImprimable * {
+    visibility: visible;
+  }
+  #partieImprimable {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  #a-exclure {
+    display: none;
+  }
+}
