@@ -1,10 +1,9 @@
 import { HttpStatusCode } from "axios";
-import connectDB from "@/lib/connectDB";
+
 import Auteur from "@/models/Auteur";
 import { NextResponse } from "next/server";
 export async function POST(req) {
   try {
-    await connectDB();
     const body = await req.json();
     const auteur = await Auteur.create(body);
     return NextResponse.json(
@@ -21,7 +20,6 @@ export async function POST(req) {
 
 export async function GET() {
   try {
-    await connectDB();
     const auteurs = await Auteur.find();
     return NextResponse.json({ auteurs });
   } catch (error) {

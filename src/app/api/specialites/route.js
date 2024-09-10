@@ -1,10 +1,8 @@
-import connectDB from "@/lib/connectDB";
 import { HttpStatusCode } from "axios";
 import Specialite from "@/models/Specialite";
 import { NextResponse } from "next/server";
 export async function GET() {
   try {
-    await connectDB();
     const specialites = await Specialite.find({}, null, { sort: { _id: -1 } });
     return NextResponse.json(specialites);
   } catch (error) {
@@ -14,7 +12,6 @@ export async function GET() {
 
 export async function POST(req) {
   try {
-    await connectDB();
     const body = await req.json();
     if (body.nomspecialite) {
       const specialite = await Specialite.create(body);
